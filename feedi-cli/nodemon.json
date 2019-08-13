@@ -1,0 +1,6 @@
+{
+    "env": {
+        "HOST": "localhost",
+        "PORT": 4000
+    }
+}

@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FEEDi</title>
+    <base href="/">
+
+    <link href="styles/fontawesome-all.css" rel="stylesheet" />
+    <link href="styles/bootstrap.css" rel="stylesheet" />
+    <link href="styles/feedi.css" rel="stylesheet" />
+
+    <script src="scripts/lib/jquery-3.4.1.js"></script>
+    <script src="scripts/lib/popper.js"></script>
+    <script src="scripts/lib/bootstrap.js"></script>
+    <script src="scripts/lib/angular.js"></script>
+    <script src="scripts/lib/angular-ui-router.js"></script>
+    <script src="scripts/lib/angular-sanitize.js"></script>
+    <script src="scripts/feedi-config.js"></script>
+    <script src="scripts/feedi.js"></script>
+    <script src="scripts/feedi-app.js"></script>
+    <script src="scripts/feedi-controllers.js"></script>
+    <script src="scripts/feedi-filters.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" ui-sref="home">
+            <i class="fas fa-bookmark"></i> FEEDi
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="signup" data-ng-show="!authData">
+                        <i class="fas fa-user"></i> SignUp
+                    </a>
+                </li>
+                <li class="nav-item" data-ng-show="!authData">
+                    <a class="nav-link" ui-sref="login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </li>
+                <li class="nav-item" data-ng-show="authData">
+                    <a class="nav-link" ui-sref="addFeed">
+                        <i class="fas fa-plus text-success"></i> Add Feed
+                    </a>
+                </li>
+                <li class="nav-item dropdown" data-ng-show="authData">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <i class="fas fa-user"></i> {{authData.name}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" ui-sref="profile">Profile</a>
+                        <a class="dropdown-item" ui-sref="changePassword">Change Password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" ui-sref="settings">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" ui-sref="logout">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-lg-0">
+        <ui-view></ui-view>
+    </div>
+
+</body>
+
+</html>

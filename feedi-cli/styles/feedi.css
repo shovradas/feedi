@@ -1,0 +1,18 @@
+﻿.dl-horizontal dt {
+    white-space: normal;
+}
+.dl-horizontal dd {
+    padding-left: 1rem;
+}
+
+.bg-success-light{
+    background-color: #f5fff7;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.feedi-active{
+    background-color: bisque;
+}

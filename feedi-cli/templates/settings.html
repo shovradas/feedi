@@ -1,0 +1,74 @@
+<div class="container pt-5">
+    <h3 class="h3">FEEDi Settings</h3>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="btn btn-light" ui-sref="home">
+                    <i class="fas fa-arrow-left"></i> Back to Posts
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <button class="btn btn-light" data-ng-click="settingsCtrl.updateAll()">
+                    <i class="fas fa-retweet text-primary"></i> Update All
+                </button>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-light" ui-sref="addFeed">
+                    <i class="fas fa-bookmark text-success"></i> Add feed
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div data-ng-bind-html="settingsCtrl.message"></div>
+
+    <div class="shadow-sm my-4">
+        <div class="card-body p-md-5">
+            <div data-ng-repeat="feed in settingsCtrl.feeds">
+                <div class="d-flex px-2">
+                    <div class="pr-3">
+                        <div class="small text-secondary">Retrieved - {{feed.retrieved | duration}} ago</div>
+                        <h5 class="h5 font-weight-bold">
+                            <a class="text-dark" target="_blank" href="{{feed.link}}">
+                                {{feed.name}}
+                            </a>
+                            <a href="{{feed.discoveredAt}}" target="_blank" class="ml-1 small">
+                                <span class="badge badge-secondary pb-1">
+                                    {{feed.type | uppercase}}
+                                </span>
+                            </a>
+                            <span class="small">
+                                <span class="badge badge-success">{{feed.noOfEntries}}</span>
+                            </span>
+                        </h5>
+                        <div class="text-secondary">{{feed.title}}</div>
+                        <div class="small">
+                            <span class="text-secondary" title="{{feed.published}}">
+                                <strong>Published</strong> - {{feed.published | duration}} ago
+                            </span>
+                            <span class="text-secondary" title="{{feed.updated}}">
+                                <strong>Updated</strong> - {{feed.updated | duration}} ago
+                            </span>
+                            <span class="text-secondary" title="{{feed.discovered}}">
+                                <strong>Discovered</strong> - {{feed.discovered | duration}} ago
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ml-auto">
+                        <button data-ng-click="settingsCtrl.update(feed._id)" class="btn btn-primary btn-sm"
+                            title="Update to latest">
+                            <i class="fas fa-retweet text-white"></i>
+                        </button>
+                        <button data-ng-click="settingsCtrl.remove(feed._id)" class="btn btn-danger btn-sm"
+                            title="Remove feed">
+                            <i class="fas fa-trash text-white"></i>
+                        </button>
+                    </div>
+
+                </div>
+                <hr data-ng-hide="{{$index == settingsCtrl.feeds.length-1}}" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+﻿<div class="row no-gutters">
+    <div class="col-md-3 px-3 mt-2">
+        <div class="card my-4">
+            <div class="card-body text-center py-5">
+                <h4 class="h4"> <i class="fas fa-user"></i><div class="mt-2">{{homeCtrl.user.name}}</div></h4>      
+                <div>User since {{homeCtrl.user.registrationDate | duration}}</div>              
+            </div>
+            <div class="card-footer text-center">
+                <a ui-sref="profile" class="btn btn-link">
+                    View Profile
+                </a>
+            </div>
+        </div>
+
+        <div class="shadow-sm p-4 border">
+            <nav class="nav flex-column">
+                <a class="nav-link cursor-pointer" data-ng-click="homeCtrl.loadAllEntries()">
+                    <i class="far fa-bookmark"></i>
+                    All Posts
+                    <span class="badge badge-light">{{homeCtrl.totalEntries}}</span>
+                </a>
+                <a class="nav-link cursor-pointer" data-ng-click="homeCtrl.getStarredEntries()">
+                    <i class="far fa-star"></i>
+                    Starred
+                    <span class="badge badge-light">{{homeCtrl.totalStaredEntries}}</span>
+                </a>
+            </nav>
+            <hr />
+            <nav class="nav flex-column">
+                <div data-ng-repeat="feed in homeCtrl.feeds">
+                    <a class="nav-link cursor-pointer" data-ng-click="homeCtrl.getEntriesByFeed(feed)">
+                        <i class="far fa-bookmark"></i>
+                        {{feed.name}}
+                        <span class="badge badge-light">{{feed.noOfEntries}}</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+    </div>
+
+    <div class="col-md-9 px-3">
+        <h3 class="h3 mt-4 pl-3">Displaying posts - {{homeCtrl.message}}</h3>
+        <nav class="navbar navbar-expand-sm bg-light navbar-light">
+
+            <a ui-sref="addFeed" class="btn text-success" title="Add new feed">
+                <i class="fas fa-plus"></i>
+            </a>
+            <a ui-sref="settings" class="btn text-primary" title="Manage your feed">
+                <i class="fas fa-tools"></i>
+            </a>
+            <ul class="navbar-nav mx-md-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown">
+                        <i class="fas fa-filter"></i> Filter
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item cursor-pointer" data-ng-click="homeCtrl.filterReadOrUnread(true)">
+                            <i class="fas fa-check-square"></i>
+                            Read</a>
+                        <a class="dropdown-item cursor-pointer" data-ng-click="homeCtrl.filterReadOrUnread(false)">
+                            <i class="far fa-check-square"></i>
+                            Unread</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link cursor-pointer" data-ng-click="homeCtrl.sort()">
+                        <i class="fas fa-sort-amount-{{homeCtrl.sortByDate? 'up' : 'down'}}"></i> {{homeCtrl.sortByDate? 'Newest First' : 'Oldest First'}} 
+                    </a>                    
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" onclick="$('#accordion .collapse').collapse('hide')">
+                        <i class="fas fa-compress-arrows-alt"></i> Minimal
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="$('#accordion .collapse').collapse('show')">
+                        <i class="fas fa-expand-arrows-alt"></i> Expanded
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="accordion">
+            <br />
+
+            <div class="shadow-sm p-4" data-ng-show="homeCtrl.totalEntries==0">
+                You haven't added any feed yet
+                <a ui-sref="addFeed" class="btn btn-light" title="Add new feed">
+                    <i class="fas fa-plus text-success fa-xs"></i> Add
+                </a>
+            </div>
+
+            <div class="shadow-sm mb-3" data-ng-repeat="entry in homeCtrl.entries | filter: {isRead: homeCtrl.filterByRead } | orderBy: 'updated':homeCtrl.sortByDate">
+                <div class="p-4 {{entry.isRead?'bg-white':'bg-success-light'}}">
+                    <div>
+                        <div class="mb-2">
+                            <i class="far fa-bookmark fa-xs"></i>
+                            <span class="text-muted small">{{entry.feed.name}} - <span
+                                    title="{{entry.retrieved}}">Retrieved {{entry.retrieved | duration}}</span>
+                                ago</span>
+                        </div>
+                        <div>
+                            <a data-toggle="collapse" href="#collapse{{$index}}">
+                                <h4 class="h4 font-weight-bold text-dark" title="{{entry.title}}">
+                                    {{entry.title}}
+                                </h4>
+                            </a>
+                        </div>
+                        <div class="d-flex flex-wrap small">
+                            <a class="nav-link pl-0 text-dark" href="#collapse{{$index}}" data-toggle="collapse"
+                                title="Toggle more">
+                                More <i class="fas fa-angle-down"></i>
+                            </a>
+                            <a class="nav-link pl-0 text-dark cursor-pointer"
+                                data-ng-click="homeCtrl.toggleFavourite(entry)" title="Toggle Favourite">
+                                <i class="fa{{entry.isFavourite?'s':'r'}} fa-star"></i>
+                            </a>
+                            <a class="nav-link pl-0 text-dark cursor-pointer" data-ng-click="homeCtrl.toggleRead(entry)"
+                                title="Toggle Read/Unread">
+                                <i class="fa{{entry.isRead?'s':'r'}} fa-check-square"></i>
+                            </a>
+
+                            <a class="btn btn-link pl-0 ml-md-auto small cursor-pointer" target="_blank" data-ng-click="homeCtrl.readArticle(entry)">
+                                Main Article <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="collapse{{$index}}" class="collapse">                        
+                        <div class="d-flex text-muted small py-2">
+                            <span title="{{entry.published}}">
+                                Published - <strong>{{entry.published | duration}} ago</strong>
+                            </span>
+                            <span class="ml-md-2" title="{{entry.updated}}">
+                                Updated - <strong>{{entry.updated | duration}} ago</strong>
+                            </span>
+                            <span class="ml-auto" title="{{entry.discovered}}">
+                                Discovered - <strong>{{entry.discovered | duration}} ago</strong>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br />
+    </div>
+</div>

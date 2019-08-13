@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row my-5 py-lg-5">
+        <div class="col-lg-5 mx-auto">
+            <div class="card">
+                <div class="card-body py-md-3">
+                    <h5 class="h5 font-weight-bold">
+                        <i class="fas fa-user"></i> Sign Up
+                    </h5>
+                </div>
+                <div class="card-footer pt-4 pb-5">
+                    <form>
+                            <div class="form-group">
+                                    <label for="name">Your Name:</label>
+                                    <input data-ng-model="signupCtrl.name" type="text" id="name" name="name"
+                                        class="form-control"/>
+                                </div>
+
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input data-ng-model="signupCtrl.email" type="email" id="email" name="email"
+                                class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input data-ng-model="signupCtrl.password" type="password" id="password" name="password"
+                                class="form-control"/>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="confirmedPassword">Confirm Password:</label>
+                                <input data-ng-model="signupCtrl.confirmedPassword" type="password" id="confirmedPassword" name="confirmedPassword"
+                                    class="form-control"/>
+                            </div>
+
+                        <div class="form-group">
+                            <label for="securityPIN">In case you forget Password:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="">Security PIN</span>
+                                </div>
+                                <input maxlength="4" data-ng-model="signupCtrl.securityPIN" type="password" class="form-control"
+                                    type="password" id="securityPIN" name="securityPIN" placeholder="Your 4 digit PIN"/>
+
+                                <input maxlength="4" data-ng-model="signupCtrl.confirmedSecurityPIN" type="password"
+                                    class="form-control" type="password" id="confirmedSecurityPIN"
+                                    name="confirmedSecurityPIN" placeholder="Confirm PIN"/>
+                            </div>
+                        </div>
+
+
+
+                        <button data-ng-click="signupCtrl.signup()" class="btn btn-primary">Signup</button>
+                        <a class="btn btn-link" ui-sref="login">Already have an account?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

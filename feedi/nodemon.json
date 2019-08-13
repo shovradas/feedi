@@ -1,0 +1,10 @@
+{
+    "env": {
+        "HOST": "localhost",
+        "PORT": 3000, 
+        "JWT_KEY": "secret",
+        "DB_HOST": "localhost",        
+        "DB_PORT": "27017",
+        "DB_NAME": "feedi"    
+    }
+}

@@ -1,0 +1,59 @@
+rss
+https://www.yahoo.com/news/rss/world
+https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en
+http://rss.cnn.com/rss/edition_world.rss
+https://www.theguardian.com/world/rss
+
+atom
+http://www.globalissues.org/news/feed
+https://www.blogger.com/feeds/2886832199291333748/posts/default
+http://drpeterjones.com/feed.php
+https://bblfish.net/blog/blog.atom
+http://tantek.com/updates.atom
+
+
+http://www.intertwingly.net/wiki/pie/KnownAtomFeeds
+
+Atom GuideLine
+https://validator.w3.org/feed/docs/atom.html
+
+
+http://www.詹姆斯.com/blog/2006/08/rss-dup-detection
+
+
+RSS
+    Channel
+        <title>
+        <link>
+        <description>        
+        
+        pubDate (optional)
+
+    Item       
+        <title>
+        <description>
+        <link>
+
+        pubDate (optional)
+Atom:
+    feed
+        id
+        title
+        updated
+
+        author (recommended)
+        link (recommended)
+
+        icon (optional)
+
+    entry
+        id
+        title
+        updated
+
+        author (recommended)
+        content (recommended)
+        link (recommended)
+        summary (recommended)
+
+        published (optional)

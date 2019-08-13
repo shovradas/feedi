@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row my-5 py-lg-5">
+        <div class="col-lg-5 mx-auto">
+            <div class="card">
+                <div class="card-body py-md-3">
+                    <h5 class="h5 font-weight-bold">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </h5>
+                </div>
+                <div class="card-footer pt-4 pb-5">
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input data-ng-model="loginCtrl.email" type="email" id="email" name="email"
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input data-ng-model="loginCtrl.password" type="password" id="password" name="password"
+                                class="form-control">
+                        </div>
+                        
+                        <button data-ng-click="loginCtrl.login()" class="btn btn-primary">Login</button>
+                        <a class="btn btn-link" ui-sref="signup">Don't have an account?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

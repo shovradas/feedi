@@ -1,0 +1,26 @@
+<div class="container pt-5">
+    <h3 class="h3 text-center p-3">
+        <i class="fas fa-bookmark text-success"></i> Add New Feed
+    </h3>
+    
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control form-control-lg bg-light" id="link" name="link"
+                placeholder="Paste your Atom, RSS, or RDF link here" data-ng-model="addFeedCtrl.link">
+        </div>
+        <div class="input-group mb-3 col-md-5 mx-auto">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Give a friendly name" data-ng-model="addFeedCtrl.name">
+            <div class="input-group-append">
+                <button class="btn btn-success" data-ng-click="addFeedCtrl.addFeed()">Add</button>
+            </div>
+        </div>
+        <div class="text-center">
+            <a class="btn btn-light" ui-sref="home">
+                <i class="fas fa-arrow-left"></i> Back to posts
+            </a>
+            <a class="btn btn-light" ui-sref="settings">
+                    <i class="fas fa-tools"></i> Manage all feeds
+                </a>
+        </div>
+    </form>
+</div>

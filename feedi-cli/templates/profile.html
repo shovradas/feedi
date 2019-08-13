@@ -1,0 +1,55 @@
+<div class="container pt-5">
+    <h3 class="h3">Your Profile</h3>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="btn btn-light" ui-sref="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-light" ui-sref="changePassword">
+                    <i class="fas fa-key"></i> Change Password
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-sm-auto mb-auto">
+            <li class="nav-item">
+                <a class="btn btn-light" ui-sref="logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="shadow-sm mt-4">
+        <div class="card-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    Name
+                </dt>
+
+                <dd>
+                    {{profileCtrl.user.name}}
+                </dd>
+
+                <dt>
+                    Email
+                </dt>
+
+                <dd>
+                        {{profileCtrl.user.email}}
+                </dd>
+
+                <dt>
+                    User Since
+                </dt>
+
+                <dd>
+                    <span title={{profileCtrl.user.registrationDate}}>
+                        {{profileCtrl.user.registrationDate | duration}}
+                    </span>                    
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
