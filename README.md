@@ -11,13 +11,17 @@ FEEDi: Web Feed Aggregator
     Database: MongoDB
 
 ## Run Instructions
-    1. Navigate to directory "feedi" and execute
+    1. Configure MongoDB
+       Install Local MongoDB or 
+       Create a database at MongoDB ATLAS and specify the connection info in "nodemon.js"
+
+    2. Navigate to directory "feedi" and execute
         npm install
         npm start
        
        REST-API endpoint will be live on http://localhost:3000
 
-    2. Navigate to directory "feedi-cli" and execute
+    3. Navigate to directory "feedi-cli" and execute
         npm install
         npm start
 
